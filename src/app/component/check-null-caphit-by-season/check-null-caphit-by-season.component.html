@@ -1,0 +1,21 @@
+<h4>Players with NULL caphit by season</h4>
+
+<mat-form-field>
+
+  <mat-label>Choose season:</mat-label>
+
+  <mat-select>
+    <mat-option *ngFor="let season of seasonList" [value]="season.season">
+      {{ season.season }}
+    </mat-option>
+  </mat-select>
+
+</mat-form-field>
+
+<section>
+  <button mat-raised-button color="primary">Check</button>
+</section>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

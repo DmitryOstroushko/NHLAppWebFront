@@ -1,0 +1,4 @@
+1. Инсталлировать 
+    sudo npm install --save @angular/material
+
+2. 
