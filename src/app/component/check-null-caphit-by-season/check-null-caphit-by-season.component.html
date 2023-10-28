@@ -4,8 +4,9 @@
 
   <mat-label>Choose season:</mat-label>
 
+  
   <mat-select>
-    <mat-option *ngFor="let season of seasonList" [value]="season.season">
+    <mat-option *ngFor="let season of seasonList" [value]="season">
       {{ season.season }}
     </mat-option>
   </mat-select>
@@ -13,9 +14,39 @@
 </mat-form-field>
 
 <section>
-  <button mat-raised-button color="primary">Check</button>
+  <button mat-raised-button color="primary" (click)="getNullCapHitInfo('')">Check</button>
 </section>
 
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+
+<table mat-table [dataSource]="capHitList" class="mat-elevation-z8" *ngIf="isLoaded">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="playerFullName">
+    <th mat-header-cell *matHeaderCellDef> Player </th>
+    <td mat-cell *matCellDef="let element"> {{ element.playerFullName }} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="teamName">
+    <th mat-header-cell *matHeaderCellDef> Team name </th>
+    <td mat-cell *matCellDef="let element"> {{ element.teamName }} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="season">
+    <th mat-header-cell *matHeaderCellDef> Season </th>
+    <td mat-cell *matCellDef="let element"> {{ element.season }} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="capHit">
+    <th mat-header-cell *matHeaderCellDef> Caphit </th>
+    <td mat-cell *matCellDef="let element"> {{ element.capHit}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
