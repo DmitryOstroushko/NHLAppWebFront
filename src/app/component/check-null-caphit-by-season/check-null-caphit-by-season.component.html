@@ -3,9 +3,8 @@
 <mat-form-field>
 
   <mat-label>Choose season:</mat-label>
-
   
-  <mat-select>
+  <mat-select [(ngModel)]="selectedValue" name="season">
     <mat-option *ngFor="let season of seasonList" [value]="season">
       {{ season.season }}
     </mat-option>
@@ -14,7 +13,7 @@
 </mat-form-field>
 
 <section>
-  <button mat-raised-button color="primary" (click)="getNullCapHitInfo('')">Check</button>
+  <button mat-raised-button color="primary" (click)="getNullCapHitInfo()">Check</button>
 </section>
 
 
