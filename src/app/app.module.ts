@@ -11,7 +11,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { NgFor, NgIf, JsonPipe } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +26,7 @@ import { SeasonListComponent } from './component/season-list/season-list.compone
 import { HttpClientModule } from '@angular/common/http';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { CheckNullCaphitBySeasonComponent } from './component/check-null-caphit-by-season/check-null-caphit-by-season.component';
+import { CheckNullCaphitByDateComponent } from './component/check-null-caphit-by-date/check-null-caphit-by-date.component';
 
 
 @NgModule({
@@ -28,7 +35,8 @@ import { CheckNullCaphitBySeasonComponent } from './component/check-null-caphit-
     PageAboutComponent,
     SeasonListComponent,
     ToolbarComponent,
-    CheckNullCaphitBySeasonComponent
+    CheckNullCaphitBySeasonComponent,
+    CheckNullCaphitByDateComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +53,14 @@ import { CheckNullCaphitBySeasonComponent } from './component/check-null-caphit-
     MatSelectModule,
     MatDividerModule,
     MatTableModule,
-    FormsModule
+    //FormGroup, FormControl, FormsModule, ReactiveFormsModule,
+    FormsModule, ReactiveFormsModule,
+    MatMenuModule,
+    NgFor, NgIf, JsonPipe,
+    MatInputModule,
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

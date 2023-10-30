@@ -1,24 +1,38 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CapHit } from '../model/cap-hit';
 import { Observable } from 'rxjs/internal/Observable';
+import { catchError, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CheckNullCaphitBySeasonService {
 
-  serviceUrl: string;
+  errorMessage: String = "";
+  error: Error | null = null;
 
-  constructor(private http: HttpClient) {
-    this.serviceUrl = 'http://localhost:8080/api/check/caphit.null';
-  }
+  serviceUrl: string = "http://localhost:8080/api/check/caphit.null";
+
+  constructor(private http: HttpClient) { }
 
   public getPlayersListBySeason(season: string): Observable<CapHit[]> {
-    console.log(this.serviceUrl + "?season=" + season);
-    return this.http.get<CapHit[]>('http://localhost:8080/api/check/caphit.null?season=2023-2024');
-    //return this.http.get<CapHit[]>(this.serviceUrl + '?season=' + season);
+    //return this.http.get<CapHit[]>(this.serviceUrl + "?season=" + season);
+    return this.http.get<CapHit[]>(this.serviceUrl, {
+        params: new HttpParams().set('season', season)
+    })
+    .pipe(
+//      map((data: CapHit[]) => {
+//      console.log("==== data is received =====");
+//      console.log("     count of data: " + data.length);
+//      console.log("     type of data: " + typeof(data))
+//      return data;
+//    }), 
+      catchError(err => {
+        this.error = err;  
+        this.errorMessage = err.message;
+        return of([]);
+      }))
   }
-
 
 }
