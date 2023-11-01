@@ -66,7 +66,7 @@ import { ApiService } from './service/api.service';
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [ApiService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

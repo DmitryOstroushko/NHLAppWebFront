@@ -3,10 +3,12 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { environment } from '../environment'
 
-@Injectable()
+//@Injectable({
+//  providedIn: 'root'
+//})
 export class ApiService {
-  protected apiUrl: string
-  protected fullUrl: string
+  protected apiUrl: string;
+  protected fullUrl: string;
 
   constructor(
     private http: HttpClient,
@@ -17,7 +19,11 @@ export class ApiService {
   }
 
   protected get<T>(query: string = ''): Observable<T> {
-    return this.http.get<T>(`${this.fullUrl}/${query}`)
+    if (query) {
+      return this.http.get<T>(`${this.fullUrl}/${query}`)
+    } else {
+      return this.http.get<T>(`${this.fullUrl}`)
+    }
   }
 
   protected put() { }

@@ -9,6 +9,7 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class SeasonService extends ApiService {
+
   constructor(http: HttpClient) {
     const endpoint = 'season'
 
@@ -18,4 +19,5 @@ export class SeasonService extends ApiService {
   public getAvailableSeasonList(): Observable<Season[]> {
     return this.get<Season[]>()
   }
+  
 }
