@@ -29,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { CheckNullCaphitBySeasonComponent } from './component/check-null-caphit-by-season/check-null-caphit-by-season.component';
 import { CheckNullCaphitByDateComponent } from './component/check-null-caphit-by-date/check-null-caphit-by-date.component';
-
+import { ApiService } from './service/api.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +66,7 @@ import { CheckNullCaphitByDateComponent } from './component/check-null-caphit-by
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
