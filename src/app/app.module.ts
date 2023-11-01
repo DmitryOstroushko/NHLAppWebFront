@@ -30,6 +30,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { CheckNullCaphitBySeasonComponent } from './component/check-null-caphit-by-season/check-null-caphit-by-season.component';
 import { CheckNullCaphitByDateComponent } from './component/check-null-caphit-by-date/check-null-caphit-by-date.component';
 import { ApiService } from './service/api.service';
+import { SeasonService } from './service/season.service';
+import { CheckNullCaphitByDateService } from './service/check-null-caphit-by-date.service';
 
 @NgModule({
   declarations: [
