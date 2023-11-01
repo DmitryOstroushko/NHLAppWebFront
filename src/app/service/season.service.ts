@@ -2,22 +2,20 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Season } from '../model/season';
+import { ApiService } from './api.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class SeasonService {
+export class SeasonService extends ApiService {
+  constructor(http: HttpClient) {
+    const endpoint = 'season'
 
-  private seasonUrl: string;
-
-  constructor(private http: HttpClient) {
-    this.seasonUrl = 'http://localhost:8080/api/season';
+    super(http, endpoint)
   }
 
   public getAvailableSeasonList(): Observable<Season[]> {
-    return this.http.get<Season[]>(this.seasonUrl);
+    return this.get<Season[]>()
   }
-
-
 }
