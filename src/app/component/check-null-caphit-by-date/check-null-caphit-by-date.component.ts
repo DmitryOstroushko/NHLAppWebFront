@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { CapHitByDate } from 'src/app/model/cap-hit-by-date';
 import { CheckNullCaphitByDateService } from 'src/app/service/check-null-caphit-by-date.service';
 
@@ -9,11 +12,18 @@ import { CheckNullCaphitByDateService } from 'src/app/service/check-null-caphit-
   styleUrls: ['./check-null-caphit-by-date.component.css']
 })
 export class CheckNullCaphitByDateComponent {
-
-  capHitList!: CapHitByDate[];
+  _liveAnnouncer: any;
+$(arg0: any): Sort {
+throw new Error('Method not implemented.');
+}
 
   isLoaded: boolean = false;
   displayedColumns: string[] = ['#', 'playerFullName', 'teamName', 'gameDate', 'gamePK', 'season', 'gamesCount', 'capHit'];
+  //capHitList!: CapHitByDate[];
+  capHitList!: MatTableDataSource<CapHitByDate>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private checkNullCaphitByDateService: CheckNullCaphitByDateService) {
   }
@@ -26,14 +36,30 @@ export class CheckNullCaphitByDateComponent {
   getNullCapHitInfo() {
 
     this.isLoaded = true;
-    //todo: разобраться со значениями selectedValue
+
     this.checkNullCaphitByDateService.getPlayersListByDate(this.range)
         .subscribe((data: CapHitByDate[]) => {
-          this.capHitList = data;
+          this.capHitList = new MatTableDataSource(data);
+          this.capHitList.sort = this.sort;
+          this.capHitList.paginator = this.paginator;
         });
+  }
 
-    console.log(this.capHitList);
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.capHitList.filter = filterValue.trim().toLowerCase();
+
+    if (this.capHitList.paginator) {
+      this.capHitList.paginator.firstPage();
+    }
   }
 
 }

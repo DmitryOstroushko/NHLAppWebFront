@@ -1,5 +1,22 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 table {
-    width: 100%;
-  }
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.filter-for-table {
+  width: 99%;
+  margin: 1em;
+}
+
+.check-button {
+  width: 11%;
+}
