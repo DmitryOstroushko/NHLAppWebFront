@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core'
+import { Inject, Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { environment } from '../environment'
 
-//@Injectable({
-//  providedIn: 'root'
-//})
+@Injectable({
+  providedIn: 'root'
+})
 export class ApiService {
   protected apiUrl: string;
   protected fullUrl: string;
 
   constructor(
     private http: HttpClient,
-    private endpoint: string
+    @Inject('endpoint') private endpoint: string
   ) {
     this.apiUrl = environment.API_URL
     this.fullUrl = `${this.apiUrl}/${this.endpoint}`

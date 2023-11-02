@@ -32,6 +32,7 @@ import { CheckNullCaphitByDateComponent } from './component/check-null-caphit-by
 import { ApiService } from './service/api.service';
 import { SeasonService } from './service/season.service';
 import { CheckNullCaphitByDateService } from './service/check-null-caphit-by-date.service';
+import { CheckNullCaphitBySeasonService } from './service/check-null-caphit-by-season.service';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,7 @@ import { CheckNullCaphitByDateService } from './service/check-null-caphit-by-dat
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [],
+  providers: [ApiService, SeasonService, CheckNullCaphitByDateService, CheckNullCaphitBySeasonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
