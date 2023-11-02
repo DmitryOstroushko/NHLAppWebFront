@@ -4,12 +4,14 @@ import { SeasonListComponent } from './component/season-list/season-list.compone
 import { PageAboutComponent } from './component/page-about/page-about.component';
 import { CheckNullCaphitBySeasonComponent } from './component/check-null-caphit-by-season/check-null-caphit-by-season.component';
 import { CheckNullCaphitByDateComponent } from './component/check-null-caphit-by-date/check-null-caphit-by-date.component';
+import { CaphitValidationService } from './service/caphit-validation.service';
 
 const routes: Routes = [
-  {path: '', component: PageAboutComponent},
-  {path: 'season', component: SeasonListComponent},
-  {path: 'check-null-caphit-by-season', component: CheckNullCaphitBySeasonComponent},
-  {path: 'check-null-caphit-by-date', component: CheckNullCaphitByDateComponent}
+  { path: '', component: PageAboutComponent },
+  { path: 'season', component: SeasonListComponent },
+  { path: 'check-null-caphit-by-season', component: CheckNullCaphitBySeasonComponent },
+  { path: 'check-null-caphit-by-date', component: CheckNullCaphitByDateComponent },
+  { path: 'caphit-validation/:kind', component: CaphitValidationService }
 ];
 
 @NgModule({

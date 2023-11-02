@@ -20,8 +20,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { PageAboutComponent } from './component/page-about/page-about.component';
 import { SeasonListComponent } from './component/season-list/season-list.component';
@@ -33,6 +33,8 @@ import { ApiService } from './service/api.service';
 import { SeasonService } from './service/season.service';
 import { CheckNullCaphitByDateService } from './service/check-null-caphit-by-date.service';
 import { CheckNullCaphitBySeasonService } from './service/check-null-caphit-by-season.service';
+import { CaphitValidationService } from './service/caphit-validation.service';
+import { CaphitValidationComponent } from './component/caphit-validation/caphit-validation.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { CheckNullCaphitBySeasonService } from './service/check-null-caphit-by-s
     SeasonListComponent,
     ToolbarComponent,
     CheckNullCaphitBySeasonComponent,
-    CheckNullCaphitByDateComponent
+    CheckNullCaphitByDateComponent,
+    CaphitValidationComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,13 @@ import { CheckNullCaphitBySeasonService } from './service/check-null-caphit-by-s
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [ApiService, SeasonService, CheckNullCaphitByDateService, CheckNullCaphitBySeasonService],
+  providers: [
+    ApiService, 
+    SeasonService, 
+    CheckNullCaphitByDateService, 
+    CheckNullCaphitBySeasonService, 
+    CaphitValidationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
