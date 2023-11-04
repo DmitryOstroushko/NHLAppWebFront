@@ -35,6 +35,8 @@ import { CheckNullCaphitByDateService } from './service/check-null-caphit-by-dat
 import { CheckNullCaphitBySeasonService } from './service/check-null-caphit-by-season.service';
 import { CaphitValidationService } from './service/caphit-validation.service';
 import { CaphitValidationComponent } from './component/caphit-validation/caphit-validation.component';
+import { LoginPageComponent } from './component/login-page/login-page.component';
+import { RegisterPageComponent } from './component/register-page/register-page.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { CaphitValidationComponent } from './component/caphit-validation/caphit-
     ToolbarComponent,
     CheckNullCaphitBySeasonComponent,
     CheckNullCaphitByDateComponent,
-    CaphitValidationComponent
+    CaphitValidationComponent,
+    LoginPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
@@ -72,13 +76,7 @@ import { CaphitValidationComponent } from './component/caphit-validation/caphit-
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [
-    ApiService, 
-    SeasonService, 
-    CheckNullCaphitByDateService, 
-    CheckNullCaphitBySeasonService, 
-    CaphitValidationService
-  ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

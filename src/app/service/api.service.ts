@@ -19,15 +19,15 @@ export class ApiService {
   }
 
   protected get<T>(query: string = ''): Observable<T> {
-    if (query) {
-      return this.http.get<T>(`${this.fullUrl}/${query}`)
-    } else {
-      return this.http.get<T>(`${this.fullUrl}`)
-    }
+    return this.http.get<T>(`${this.fullUrl}/${query}`)
   }
 
+  protected post<T>(data: any, query: string = ''): Observable<T> {
+    return this.http.post<T>(`${this.fullUrl}/${query}`, data);
+  }
+
+
   protected put() { }
-  protected post() { }
   protected patch() { }
   protected delete() { }
 }

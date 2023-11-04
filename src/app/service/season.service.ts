@@ -12,12 +12,11 @@ export class SeasonService extends ApiService {
 
   constructor(http: HttpClient) {
     const endpoint = 'season'
-
     super(http, endpoint)
   }
 
   public getAvailableSeasonList(): Observable<Season[]> {
-    return this.get<Season[]>()
+    return this.get<Season[]>();
   }
   
 }
