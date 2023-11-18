@@ -2,44 +2,43 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { CapHit } from 'src/app/model/cap-hit';
+import { Person } from 'src/app/model/person';
 import { Season } from 'src/app/model/season';
-import { CheckNullCaphitBySeasonService } from 'src/app/service/check-null-caphit-by-season.service';
+import { CheckNullPersonalDataService } from 'src/app/service/check-null-personal-data.service';
 import { SeasonService } from 'src/app/service/season.service';
 
 @Component({
-  selector: 'app-check-null-caphit-by-season',
-  templateUrl: './check-null-caphit-by-season.component.html',
-  styleUrls: ['./check-null-caphit-by-season.component.css']
+  selector: 'app-check-null-personal-data',
+  templateUrl: './check-null-personal-data.component.html',
+  styleUrls: ['./check-null-personal-data.component.css']
 })
-export class CheckNullCaphitBySeasonComponent implements OnInit {
+export class CheckNullPersonalDataComponent implements OnInit {
 
   isLoaded: boolean = false;
   selectedValue!: string;
-  displayedColumns: string[] = ['#', 'playerFullName', 'teamName', 'season', 'gamesCount', 'capHit'];  
+  displayedColumns: string[] = ['#', 'person', 'playerFullName', 'teamName'];
   seasonList!: Season[];
-  //capHitList!: CapHit[];
-  capHitList!: MatTableDataSource<CapHit>;
+  personList!: MatTableDataSource<Person>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   _liveAnnouncer: any;
   
   constructor(private seasonService: SeasonService,
-    private checkNullCaphitBySeasonService: CheckNullCaphitBySeasonService) {
+    private checkkNullPersonalDataService: CheckNullPersonalDataService) {
   }
 
   selectSeason($event: Event) {
     this.selectedValue = ($event.target as HTMLSelectElement).value;
   }
 
-  getNullCapHitInfo() {
+  getNullPersonalDataInfo() {
     this.isLoaded = true;
-    this.checkNullCaphitBySeasonService.getPlayersListBySeason(this.selectedValue.toString())
-        .subscribe((data: CapHit[]) => {
-          this.capHitList = new MatTableDataSource(data);
-          this.capHitList.sort = this.sort;
-          this.capHitList.paginator = this.paginator;
+    this.checkkNullPersonalDataService.getPlayersListBySeason(this.selectedValue.toString())
+        .subscribe((data: Person[]) => {
+          this.personList = new MatTableDataSource(data);
+          this.personList.sort = this.sort;
+          this.personList.paginator = this.paginator;
         });
   }
 
@@ -59,11 +58,10 @@ export class CheckNullCaphitBySeasonComponent implements OnInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.capHitList.filter = filterValue.trim().toLowerCase();
-    if (this.capHitList.paginator) {
-      this.capHitList.paginator.firstPage();
+    this.personList.filter = filterValue.trim().toLowerCase();
+    if (this.personList.paginator) {
+      this.personList.paginator.firstPage();
     }
   }
   
 }
-

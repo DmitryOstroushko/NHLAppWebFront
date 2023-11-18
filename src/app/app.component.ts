@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+enum FormQuery {
+  NullCaphitBySeason,
+  NullCaphitByDate
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -37,6 +37,9 @@ import { CaphitValidationService } from './service/caphit-validation.service';
 import { CaphitValidationComponent } from './component/caphit-validation/caphit-validation.component';
 import { LoginPageComponent } from './component/login-page/login-page.component';
 import { RegisterPageComponent } from './component/register-page/register-page.component';
+import { QueryFormComponent } from './component/query-form/query-form.component';
+import { CheckNullPersonalDataComponent } from './component/check-null-personal-data/check-null-personal-data.component';
+import { StatSkaterComponent } from './component/stat-skater/stat-skater.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { RegisterPageComponent } from './component/register-page/register-page.c
     CheckNullCaphitByDateComponent,
     CaphitValidationComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    QueryFormComponent,
+    CheckNullPersonalDataComponent,
+    StatSkaterComponent
   ],
   imports: [
     BrowserModule,

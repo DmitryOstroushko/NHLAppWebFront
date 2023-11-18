@@ -1,19 +1,6 @@
 <app-toolbar></app-toolbar>
 
-<button routerLink="/" mat-button>Above</button>
-
-<button mat-button [matMenuTriggerFor]="menuDataValidation">Data validation</button>
-<mat-menu #menuDataValidation="matMenu">
-  <button routerLink="/check-null-caphit-by-season" mat-menu-item>
-    <span>Null caphit by season</span>
-  </button>
-  <button routerLink="/check-null-caphit-by-date" mat-menu-item>
-    <span>Null caphit by date</span>
-  </button>
-  <button routerLink="['/caphit-validation', 1]" mat-menu-item>
-    <span>Null personal info</span>
-  </button>
-</mat-menu>
+<button routerLink="/" mat-button>About</button>
 
 <button mat-button [matMenuTriggerFor]="menuStructure">NHL structure</button>
 <mat-menu #menuStructure="matMenu">
@@ -33,11 +20,24 @@
   <button mat-menu-item>
     <span>Team statistics</span>
   </button>
-  <button mat-menu-item>
-    <span>Player statistics</span>
+  <button routerLink="/stat-skater" mat-menu-item>
+    <span>Players statistics</span>
   </button>
   <button mat-menu-item>
     <span>Games statistics</span>
+  </button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="menuDataValidation">Data validation</button>
+<mat-menu #menuDataValidation="matMenu">
+  <button routerLink="/check-null-caphit-by-season" mat-menu-item>
+    <span>Players with null caphit by season</span>
+  </button>
+  <button routerLink="/check-null-caphit-by-date" mat-menu-item>
+    <span>Players with null caphit in games by date</span>
+  </button>
+  <button routerLink="/check-null-personal-data" mat-menu-item>
+    <span>Players with null personal data</span>
   </button>
 </mat-menu>
 

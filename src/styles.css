@@ -20,3 +20,7 @@ th.mat-sort-header-sorted {
 .check-button {
   width: 11%;
 }
+
+mat-form-field {
+  margin-right: 12px;
+}
