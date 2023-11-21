@@ -11,6 +11,7 @@ import { RegisterPageComponent } from './component/register-page/register-page.c
 import { QueryFormComponent } from './component/query-form/query-form.component';
 import { CheckNullPersonalDataComponent } from './component/check-null-personal-data/check-null-personal-data.component';
 import { StatSkaterComponent } from './component/stat-skater/stat-skater.component';
+import { TeamRosterComponent } from './component/team-roster/team-roster.component';
 
 const routes: Routes = [
   { path: '', component: PageAboutComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'check-null-caphit-by-date', component: CheckNullCaphitByDateComponent },
   { path: 'check-null-personal-data', component: CheckNullPersonalDataComponent },
   { path: 'stat-skater', component: StatSkaterComponent },
+  { path: 'team-roster', component: TeamRosterComponent },
 
   // Routing components below are unused
   { path: 'login', component: LoginPageComponent },

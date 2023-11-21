@@ -40,6 +40,7 @@ import { RegisterPageComponent } from './component/register-page/register-page.c
 import { QueryFormComponent } from './component/query-form/query-form.component';
 import { CheckNullPersonalDataComponent } from './component/check-null-personal-data/check-null-personal-data.component';
 import { StatSkaterComponent } from './component/stat-skater/stat-skater.component';
+import { TeamRosterComponent } from './component/team-roster/team-roster.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { StatSkaterComponent } from './component/stat-skater/stat-skater.compone
     RegisterPageComponent,
     QueryFormComponent,
     CheckNullPersonalDataComponent,
-    StatSkaterComponent
+    StatSkaterComponent,
+    TeamRosterComponent
   ],
   imports: [
     BrowserModule,

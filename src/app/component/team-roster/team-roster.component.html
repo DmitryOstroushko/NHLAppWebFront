@@ -1,0 +1,87 @@
+<h4>Roster of players</h4>
+
+<table>
+      <mat-form-field>
+        <mat-label>Choose season:</mat-label>
+        <select matNativeControl (change)="selectSeason($event)">
+          <option value=""></option>
+          <option *ngFor="let option of seasonList" [value]="option.season"
+            [selected]="seasonSelectedValue === option.season">{{
+            option.season }}</option>
+        </select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Choose team:</mat-label>
+        <select matNativeControl (change)="selectTeam($event)">
+          <option value=""></option>
+          <option *ngFor="let option of teamList" [value]="option.id"
+            [selected]="teamSelectedValue === option.id">{{
+            option.name }}</option>
+        </select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Choose nationality:</mat-label>
+        <select matNativeControl (change)="selectNationality($event)">
+          <option value=""></option>
+          <option *ngFor="let option of nationalityList" [value]="option.nationality"
+            [selected]="nationalitySelectedValue === option.nationality">{{
+            option.nationality }}</option>
+        </select>
+      </mat-form-field>
+</table>
+
+<section>
+  <button mat-raised-button color="primary" (click)="getTeamRosterInfo()" class="check-button">Get info</button>
+</section>
+
+<div class="mat-elevation-z8" *ngIf="isLoaded">
+
+  <mat-form-field class="filter-for-table">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="teamRosterList" matSort (matSortChange)="announceSortChange($event)">
+
+    <ng-container matColumnDef="playerFullName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by player"> Player </th>
+      <td mat-cell *matCellDef="let element"> {{ element.playerFullName }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="games">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by games played"> Games </th>
+      <td mat-cell *matCellDef="let element"> {{ element.games }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="points">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by points"> Points </th>
+      <td mat-cell *matCellDef="let element"> {{ element.points }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="goals">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by goals scored"> Goals </th>
+      <td mat-cell *matCellDef="let element"> {{ element.goals }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="plusMinus">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by plus-minus"> +/- </th>
+      <td mat-cell *matCellDef="let element"> {{ element.plusMinus }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="timeOnIce">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by time on ice"> TimeOnIce </th>
+      <td mat-cell *matCellDef="let element"> {{ element.timeOnIce }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="caphit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by caphit"> Caphit </th>
+      <td mat-cell *matCellDef="let element"> {{ element.caphit | currency:'USD' : true : '.0'}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
+</div>
